@@ -15,16 +15,18 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
-if(n < 0) return "Not a natural number"
-if(n >= 0 && n < 2) return 1
-return n*nFactorial (n-1)
+if (n <= 0 ) return "not a natural number"
+else if(n === 1) return 1
+return n * nFactorial(n - 1)
 }
 
+
+
 function nFibonacci(n) {
-  if(n<0) return "Not a natural number"
-  if(n>=0 && n<2) return n 
-  return nFibonacci(n-1) + nFibonacci(n-2) 
-}
+  if(n === 0 || n === 1) return n // si n esta en posicion 0 o 1 en la secuencia de fibbo devuelve lo que vale n porque no hay fibbo de 0 o 1 
+  return nFibonacci (n - 1) + nFibonacci (n - 2) // se aplica recursion llamando a la funcion de nuevo con argumento de lo que valia n -1 y n -2 porque asi funciona fibbo
+  }
+
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
@@ -36,16 +38,20 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
-this.arr = []
-}
-Queue.prototype.enqueue = function(value){
-  this.arr.push(value)
-}
-Queue.prototype.dequeue = function(){
-  return this.arr.shift()
-}
-Queue.prototype.size = function(){
-  return this.arr.length
+
+  this.arr = [] //se crea para que los valores agregados se vayan guardando en orden
+
+  Queue.prototype.enqueue = function(valor){// se crea una funcion para la contructora Queue
+  return this.arr.push(valor) // mete al arreglo el valor que recibio, y pone los siguientes en forma creciente
+  }
+
+  Queue.prototype.dequeue = function(){
+  return this.arr.shift() // quita de forma decreciente los valores en el array
+  }
+
+  Queue.prototype.size = function(){
+  return this.arr.length// devuelve el valor dentro del array
+  }
 }
 
 
