@@ -2,11 +2,12 @@
 
 // Closures
 
-function counter() {
+function counter(){
   var contador = 1
   return function(){
-    return contador++
-  }
+ return contador++
+} 
+}
   /*
   Ejercicio 1
 
@@ -23,14 +24,14 @@ function counter() {
   otroContador()      // 2
   otroContador()      // 3
    */
-}
 
-function cacheFunction(cb) {
-  var cache = {}
-  return function(arg){
-  if (cache.hasOwnProperty(arg)) return cache[arg]
-  cache[arg] = cb(arg)
-  return cache[arg]
+
+function cacheFunction(cb) { // se invoca a cacheFunction con un cb como argumento, significa que se usa otra funcion como argumento.
+  var cache = {} // en esta var se almacena el resultado de las invocaciones que no tengan un caso previo i/o cuyo resultado aun no este en el cache
+  return function(arg){// aca se hace recursion retornando otra funcion que toma un argumento, el cual se va a procesar
+  if (cache.hasOwnProperty(arg)) return cache[arg] // aca se indica que si en la esta guardada la propiedad del argumento que estamos pasando que reotrne el resultado que ya esta en la cache
+  cache[arg] = cb(arg) // si no tenia un resultado ya almacenado en la cache indica que la var cache ahora deberia ser igual al cb de ese argumento 
+  return cache[arg]// indica que luego de almacenar el nuevo valor en el cache debe retornar el valor
   }
   /*
   Ejercicio 2
@@ -77,7 +78,7 @@ function getNombre() {
   Usando el método bind() guardar, en las dos variables declaradas a continuación, dos funciones que actúen como getNombre pero retornen el nombre del instructor y del alumno, respectivamente.
 */
 
-let getNombreInstructor = getNombre.bind(instructor);
+let getNombreInstructor = getNombre.bind(instructor); // se hace el bind para indicarle al sistema donde apuntamos con el this
 let getNombreAlumno = getNombre.bind(alumno);
 
 /*
@@ -90,8 +91,8 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let textoAsteriscos = crearCadena.bind(this , "*" , "*");
-let textoGuiones = crearCadena.bind(this , "-" , "-");
+let textoAsteriscos = crearCadena.bind(this , "*" , "*");// se pasa primero el this por como esta contruido el metodo .bind 
+let textoGuiones = crearCadena.bind(this , "-" , "-"); // se define lo que va a ser el del izq y del der
 let textoUnderscore = crearCadena.bind(this , "_" , "_");
 
 // No modifiquen nada debajo de esta linea
